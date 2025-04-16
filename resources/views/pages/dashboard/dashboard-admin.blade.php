@@ -8,32 +8,30 @@
     </x-slot>
 
     <!-- begin: grid -->
-    <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
-        <div class="lg:col-span-2">
-            <div class="grid">
-                <div class="card card-grid h-full min-w-full">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Block 1
-                        </h3>
-                    </div>
-                    <div class="card-body flex flex-col gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+        <!-- Block 1 : Vue d’ensemble -->
+        <div class="card-body">
+            <h2 class="text-lg font-semibold text-gray-700 mb-4">Statistiques globales</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+                <x-dashboard-card title="Promotions" :count="$cohortsCount" route="{{ route('cohort.index') }}" />
+                <x-dashboard-card title="Étudiants" :count="$studentsCount" route="{{ route('student.index') }}" />
+                <x-dashboard-card title="Enseignants" :count="$teachersCount" route="{{ route('teacher.index') }}" />
+                <x-dashboard-card title="Groupes" :count="$groupsCount" route="{{ route('group.index') }}" />
+            </div>
+        </div>
 
-                    </div>
-                </div>
+        <!-- Block 2 : Raccourcis -->
+        <div class="card-body">
+            <h2 class="text-lg font-semibold text-gray-700 mb-4">Liens rapides</h2>
+            <div class="flex flex-col gap-4">
+                <a href="{{ route('cohort.index') }}" class="btn btn-sm btn-primary">Gérer les promotions</a>
+                <a href="{{ route('student.index') }}" class="btn btn-sm btn-primary">Gérer les étudiants</a>
+                <a href="{{ route('teacher.index') }}" class="btn btn-sm btn-primary">Gérer les enseignants</a>
+                <a href="{{ route('group.index') }}" class="btn btn-sm btn-primary">Gérer les groupes</a>
             </div>
         </div>
-        <div class="lg:col-span-1">
-            <div class="card card-grid h-full min-w-full">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Block 2
-                    </h3>
-                </div>
-                <div class="card-body flex flex-col gap-5">
-                </div>
-            </div>
-        </div>
+
+
     </div>
     <!-- end: grid -->
 </x-app-layout>

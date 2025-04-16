@@ -1,39 +1,39 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="flex items-center gap-1 text-sm font-normal">
-            <span class="text-gray-700">
-                {{ __('Dashboard') }}
-            </span>
-        </h1>
+        <h2 class="text-xl font-bold">Tableau de bord étudiant</h2>
     </x-slot>
 
-    <!-- begin: grid -->
-    <div class="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
-        <div class="lg:col-span-2">
-            <div class="grid">
-                <div class="card card-grid h-full min-w-full">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Block 1
-                        </h3>
-                    </div>
-                    <div class="card-body flex flex-col gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <h3 class="font-semibold text-gray-700 mb-2">Bilans à faire</h3>
+            <ul class="list-disc ml-4">
+                @foreach($todoAssessments as $assessment)
+                    <li>{{ $assessment->title }}</li>
+                @endforeach
+            </ul>
 
-                    </div>
-                </div>
-            </div>
+            <h3 class="font-semibold text-gray-700 mt-4 mb-2">Bilans complétés</h3>
+            <ul class="list-disc ml-4 text-green-600">
+                @foreach($doneAssessments as $assessment)
+                    <li>{{ $assessment->title }}</li>
+                @endforeach
+            </ul>
         </div>
-        <div class="lg:col-span-1">
-            <div class="card card-grid h-full min-w-full">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Block 2
-                    </h3>
-                </div>
-                <div class="card-body flex flex-col gap-5">
-                </div>
-            </div>
+
+        <div>
+            <h3 class="font-semibold text-gray-700 mb-2">Tâches à faire</h3>
+            <ul class="list-disc ml-4">
+                @foreach($pendingTasks as $task)
+                    <li>{{ $task->title }}</li>
+                @endforeach
+            </ul>
+
+            <h3 class="font-semibold text-gray-700 mt-4 mb-2">Tâches pointées</h3>
+            <ul class="list-disc ml-4 text-green-600">
+                @foreach($doneTasks as $task)
+                    <li>{{ $task->title }} — {{ $task->pivot->comment }}</li>
+                @endforeach
+            </ul>
         </div>
     </div>
-    <!-- end: grid -->
 </x-app-layout>

@@ -81,4 +81,40 @@ class User extends Authenticatable
             ->withPivot('role')
             ->first();
     }
+
+    public function schools()
+    {
+        return $this->belongsToMany(School::class, 'users_schools')->withPivot('role');
+    }
+
+
+
+    public function assessments()
+    {
+        return $this->belongsToMany(Assessment::class)
+            ->withPivot('status', 'completed_at')
+            ->withTimestamps();
+    }
+
+
+    public function commonTasks()
+    {
+        return $this->belongsToMany(CommonTask::class)
+            ->withPivot('comment', 'done_at')
+            ->withTimestamps();
+    }
+
+
+
+
+
+
+
+
+    // User.php
+
+
+
+
+
 }
