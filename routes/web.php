@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/etudiant', [StudentController::class, 'index'])->name('dashboard.student');
 
+        Route::get('/teacher', [TeacherController::class, 'index'])->name('dashboard.teacher');
+
 
 
     });

@@ -106,6 +106,10 @@ class User extends Authenticatable
 
 
 
+    public function teachingCohorts()
+    {
+        return $this->belongsToMany(Cohort::class, 'cohort_user');
+    }
 
 
 
