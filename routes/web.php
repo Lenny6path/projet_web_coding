@@ -50,6 +50,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/teacher', [TeacherController::class, 'index'])->name('dashboard.teacher');
 
+        Route::resource('students', StudentController::class);
+
+        Route::resource('cohorts', CohortController::class);
+
+        Route::resource('teachers', TeacherController::class)->middleware(['auth']);
+
 
 
     });
